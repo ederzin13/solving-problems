@@ -8,10 +8,11 @@ export default class Recursion {
     this.message(n - 1);
   }
 
-  public progressive(n: number): number {
-    if (n === 5) return 0;
+  //CONTAGEM PROGRESSIVA – Dado um inteiro positivo n, realize a contagem progressiva de 1 até n.
+  public progressive(n: number, count: number = 1): number {
+    if (count > n) return 0;
 
-    console.log(n);
-    return this.progressive(n + 1);
+    console.log(count);
+    return this.progressive(n, count + 1);
   }
 }
