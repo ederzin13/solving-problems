@@ -21,5 +21,14 @@ export default class Factorial {
     return this.factorial(n - 1, aux);
   }
 
-  public power() {}
+  public power(
+    base: number,
+    exp: number,
+    aux: number = base,
+    count: number = 1,
+  ): number {
+    if (count === exp) return base;
+
+    return this.power(base * aux, exp, aux, count + 1);
+  }
 }

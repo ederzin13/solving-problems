@@ -13,6 +13,7 @@ let contagem: Count = new Count();
 // console.log(contagem.intervalSum(1, 10));
 // console.log(contagem.betterIntervalSum(10, 1));
 
-let fatorial: Factorial = new Factorial(4);
+let fatorial: Factorial = new Factorial(5);
 
 // console.log(fatorial.factorial(fatorial.getN()));
+console.log(fatorial.power(fatorial.getN(), 3));
