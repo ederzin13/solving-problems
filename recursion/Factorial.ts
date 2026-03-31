@@ -31,4 +31,20 @@ export default class Factorial {
 
     return this.power(base * aux, exp, aux, count + 1);
   }
+
+  public fibonacci() {
+    return this.fibonacciAux(this.getN());
+  }
+
+  //current = previous + prePrevious
+
+  //previous
+  //prePrevious
+  private fibonacciAux(n: number, previous: number = n): number {
+    if (n === 2) return 1;
+
+    return n + this.fibonacciAux(previous);
+  }
+
+  //???
 }

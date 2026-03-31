@@ -16,4 +16,6 @@ let contagem: Count = new Count();
 let fatorial: Factorial = new Factorial(5);
 
 // console.log(fatorial.factorial(fatorial.getN()));
-console.log(fatorial.power(fatorial.getN(), 3));
+// console.log(fatorial.power(fatorial.getN(), 3));
+
+console.log(fatorial.fibonacci());
