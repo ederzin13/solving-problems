@@ -1,0 +1,1 @@
+fibo de 10 é igual a fibo do 9 + fibo do 8
