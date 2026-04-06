@@ -40,10 +40,10 @@ export default class Factorial {
 
   //previous
   //prePrevious
-  private fibonacciAux(n: number, previous: number = n): number {
-    if (n === 2) return 1;
+  private fibonacciAux(n: number): number {
+    if (n === 1 || n === 2) return 1;
 
-    return n + this.fibonacciAux(previous);
+    return this.fibonacciAux(n - 1) + this.fibonacciAux(n - 2);
   }
 
   //???
