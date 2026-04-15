@@ -2,6 +2,9 @@
 
 import FindUnique from "./FindUnique";
 
-let teste: FindUnique = new FindUnique(10, 5);
+let teste: FindUnique = new FindUnique(30, 5);
 
+// teste.setList([1, 2, 1, 1, 1, 1]);
 console.log(teste.getList());
+
+console.log(teste.findUniq());
