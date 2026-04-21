@@ -30,24 +30,20 @@ export default class SortingAlgs {
 		return sorted;
 	}
 
-	//por que???
+	//contemplem
 	public selectionSort2() {
 		let list: number[] = this.getList();
-		let min: number = list[0];
-		let pos: number = 0;
+		let sorted: number[] = [];
+		const LEN: number = list.length;
 
-		while (pos < list.length) {
-			for (let i = pos; i <= list.length; i++) {
-				if (list[i] < min) {
-					min = list[i];
-					list[i] = list[pos];
-					list[pos] = min;
-					pos = pos + 1;
-				}
-			}
+		while (sorted.length < LEN) {
+			let min: number = this.getMenor(list);
+			let toSplice: number = this.getPosition(list, min);
+			list.splice(toSplice, 1);
+			sorted.push(min);
 		}
 
-		return list;
+		return sorted;
 	}
 
 	private getMenor(list: number[]): number {
@@ -58,5 +54,15 @@ export default class SortingAlgs {
 		}
 
 		return menor;
+	}
+
+	private getPosition(list: number[], num: number): number {
+		let position: number = 0;
+
+		for (let i: number = 0; i <= list.length; i++) {
+			if (list[i] === num) position = i;
+		}
+
+		return position;
 	}
 }
