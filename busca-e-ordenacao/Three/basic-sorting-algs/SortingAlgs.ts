@@ -11,7 +11,7 @@ export default class SortingAlgs {
 		return this.list;
 	}
 
-	public selectionSort() {
+	public selectionSort(): number[] {
 		let unsorted: number[] = this.getList();
 		let sorted: number[] = [];
 		let menor: number = 0;
@@ -31,7 +31,7 @@ export default class SortingAlgs {
 	}
 
 	//contemplem
-	public selectionSort2() {
+	public selectionSort2(): number[] {
 		let list: number[] = this.getList();
 		let sorted: number[] = [];
 		const LEN: number = list.length;
@@ -44,6 +44,28 @@ export default class SortingAlgs {
 		}
 
 		return sorted;
+	}
+
+	//obra prima
+	public selectionSort3(): number[] {
+		let list: number[] = this.getList();
+		let j: number = 0;
+
+		while (!this.isSorted(list)) {
+			let min: number = list[j];
+
+			for (let i: number = j; i <= list.length; i++) {
+				if (list[i] < min) {
+					min = list[i];
+					list[i] = list[j];
+					list[j] = min;
+				}
+			}
+
+			j++;
+		}
+
+		return list;
 	}
 
 	private getMenor(list: number[]): number {
@@ -64,5 +86,13 @@ export default class SortingAlgs {
 		}
 
 		return position;
+	}
+
+	public isSorted(list: number[]): boolean {
+		for (let i: number = 0; i <= list.length; i++) {
+			if (list[i] > list[i + 1]) return false;
+		}
+
+		return true;
 	}
 }
