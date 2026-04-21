@@ -68,6 +68,25 @@ export default class SortingAlgs {
 		return list;
 	}
 
+	public bubbleSort(): number[] {
+		let list: number[] = this.getList();
+		let j: number = list.length;
+
+		while (j > 0) {
+			for (let i: number = 0; i < j; i++) {
+				if (list[i] > list[i + 1]) {
+					let aux: number = list[i];
+					list[i] = list[i + 1];
+					list[i + 1] = aux;
+				}
+			}
+
+			j--;
+		}
+
+		return list;
+	}
+
 	private getMenor(list: number[]): number {
 		let menor: number = list[0];
 
