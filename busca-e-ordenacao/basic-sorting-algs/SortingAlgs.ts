@@ -87,6 +87,32 @@ export default class SortingAlgs {
 		return list;
 	}
 
+	// que podridão
+	public insertionSort(): number[] {
+		let unsorted: number[] = this.getList();
+		let sorted: number[] = this.genEmptyList(unsorted.length);
+		let current: number = 0;
+
+		//[10, 5, 9, 2, 8, 3, 7, 4, 6, 1]
+
+		//inserindo o primeiro elemento
+		sorted[0] = unsorted[0];
+
+		for (let i: number = 0; i < this.LEN; i++) {}
+
+		return sorted;
+	}
+
+	private genEmptyList(len: number): number[] {
+		let list: number[] = [];
+
+		for (let i: number = 0; i < len; i++) {
+			list.push(0);
+		}
+
+		return list;
+	}
+
 	private getMenor(list: number[]): number {
 		let menor: number = list[0];
 
