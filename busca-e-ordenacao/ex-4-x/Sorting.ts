@@ -48,6 +48,22 @@ export default class Sorting {
       }
     }
 
+    this.setList(list);
+
     return list;
+  }
+
+  public shuffle(): void {
+    let list: number[] = this.getList();
+    let shuffled: number[] = [];
+
+    for (let i: number = 0; i < this.LEN; i++) {
+      let position: number = Math.ceil(Math.random() * list.length - 1);
+
+      shuffled.push(list[position]);
+      list.splice(position, 1);
+    }
+
+    this.setList(shuffled);
   }
 }
