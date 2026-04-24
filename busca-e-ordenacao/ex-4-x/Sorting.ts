@@ -83,4 +83,26 @@ export default class Sorting {
 
     return list;
   }
+
+  public recursiveSelection(pos: number = 0) {
+    let list: number[] = this.getList();
+    let min: number = this.getMin(list, pos);
+
+    let aux: number = list[pos];
+    list[pos] = min;
+
+    return this.recursiveSelection(pos + 1);
+  }
+
+  private getMin(list: number[], pos: number, aux: number = list[pos]): number {
+    let min: number = aux;
+
+    if (pos > list.length) return min;
+
+    if (list[pos] < min) {
+      min = list[pos];
+    }
+
+    return this.getMin(list, pos + 1, min);
+  }
 }
