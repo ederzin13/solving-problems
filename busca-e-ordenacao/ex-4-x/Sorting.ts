@@ -66,4 +66,21 @@ export default class Sorting {
 
     this.setList(shuffled);
   }
+
+  public gnomeSort(): number[] {
+    let list: number[] = this.getList();
+
+    for (let i: number = 0; i < this.LEN; i++) {
+      if (i > 0) {
+        if (list[i] < list[i - 1]) {
+          let aux: number = list[i];
+          list[i] = list[i - 1];
+          list[i - 1] = aux;
+          i = i - 2;
+        }
+      }
+    }
+
+    return list;
+  }
 }
