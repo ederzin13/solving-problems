@@ -1,5 +1,53 @@
 export default class Sorting {
-	private list: number[];
+  private list: number[];
+  private readonly LEN: number;
 
-	public constructor(list: number[]) {}
+  public constructor() {
+    this.list = this.genList();
+    this.LEN = this.list.length;
+  }
+
+  public getList(): number[] {
+    return this.list;
+  }
+
+  public setList(list: number[]) {
+    this.list = list;
+  }
+
+  private genList(): number[] {
+    let list: number[] = [];
+
+    for (let i: number = 0; i < 20; i++) {
+      list.push(Math.ceil(Math.random() * 20));
+    }
+
+    return list;
+  }
+
+  public isAscending(list: number[]): boolean {
+    let l: number[] = list;
+
+    for (let i: number = 0; i <= this.LEN; i++) {
+      if (l[i] > l[i + 1]) return false;
+    }
+
+    return true;
+  }
+
+  public betterBubble() {
+    let list: number[] = this.getList();
+
+    while (!this.isAscending(list)) {
+      for (let i: number = 0; i <= this.LEN; i++) {
+        if (list[i] > list[i + 1]) {
+          let aux: number = list[i];
+          list[i] = list[i + 1];
+          list[i + 1] = aux;
+        }
+      }
+    }
+
+    return list;
+  }
 }
