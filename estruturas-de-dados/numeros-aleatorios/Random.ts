@@ -6,8 +6,10 @@ export default class Random {
     this.list = this.genList(n);
   }
 
-  public getList(): number[] {
-    return this.list;
+  public getList(): string {
+    let str: string = this.toString();
+
+    return str;
   }
 
   public setList(list: number[]): void {
@@ -19,6 +21,18 @@ export default class Random {
 
     for (let i: number = 0; i < n; i++) {
       list.push(Math.ceil(Math.random() * this.RANGE));
+    }
+
+    return list;
+  }
+
+  public cutValue(n: number) {
+    let list = this.list;
+
+    for (let i = 0; i < list.length; i++) {
+      if (list[i] < n) {
+        list.splice(i, 1);
+      }
     }
 
     return list;
