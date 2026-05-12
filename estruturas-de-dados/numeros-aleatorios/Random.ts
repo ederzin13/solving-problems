@@ -1,9 +1,11 @@
 export default class Random {
   private list: number[];
-  private readonly RANGE: number = 10;
+  private readonly LEN: number;
+  private readonly RANGE: number = 50;
 
   public constructor(n: number) {
     this.list = this.genList(n);
+    this.LEN = this.list.length;
   }
 
   public getList(): string {
@@ -26,20 +28,34 @@ export default class Random {
     return list;
   }
 
-  public cutValue(n: number) {
-    let list = this.list;
+  public cutValue(n: number): string {
+    let list: number[] = this.list;
 
     for (let i = 0; i < list.length; i++) {
       if (list[i] < n) {
         list.splice(i, 1);
+        i--;
       }
     }
 
-    return list;
+    return this.toString(list);
   }
 
-  public toString(): string {
-    let toStr: number[] = this.list;
+  public rmMultiple(n: number): string {
+    let list = this.list;
+
+    for (let i = 0; i < list.length; i++) {
+      if (list[i] % n === 0) {
+        list.splice(i, 1);
+        i--;
+      }
+    }
+
+    return this.toString(list);
+  }
+
+  public toString(list?: number[]): string {
+    let toStr: number[] = list ? list : this.list;
     let str: string = "";
 
     for (let i = 0; i < toStr.length; i++) {
