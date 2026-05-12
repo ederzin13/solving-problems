@@ -44,6 +44,8 @@ export default class Random {
   public rmMultiple(n: number): string {
     let list = this.list;
 
+    if (n === 0) return this.toString(list);
+
     for (let i = 0; i < list.length; i++) {
       if (list[i] % n === 0) {
         list.splice(i, 1);
