@@ -119,6 +119,33 @@ export default class Random {
     return this.toString(list);
   }
 
+  //ex 8
+  public revert(): string {
+    let list: number[] = this.list;
+    const LEN: number = this.LEN;
+    let middle: number = Math.ceil(LEN / 2);
+
+    for (let i: number = 0; i < middle; i++) {
+      let aux: number = list[i];
+      list[i] = list[LEN - i - 1];
+      list[LEN - i - 1] = aux;
+    }
+
+    return this.toString(list);
+  }
+
+  public betterRevert(): string {
+    let list: number[] = this.list;
+    const LEN: number = this.LEN;
+
+    for (let i: number = 0; i < LEN; i++) {
+      let aux: number | undefined = list.shift();
+      list.push(aux);
+    }
+
+    return this.toString(list);
+  }
+
   private average(list: number[]): number {
     let avg: number = 0;
 
