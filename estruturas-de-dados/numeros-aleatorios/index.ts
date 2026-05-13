@@ -18,5 +18,7 @@ console.log(teste.getList());
 // console.log(teste.reduce(5));
 
 // console.log(teste.getSlice(2, 7));
-console.log(teste.revert());
-console.log(teste.betterRevert());
+// console.log(teste.revert());
+// console.log(teste.betterRevert());
+
+console.log(teste.amplitude());

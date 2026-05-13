@@ -139,11 +139,29 @@ export default class Random {
     const LEN: number = this.LEN;
 
     for (let i: number = 0; i < LEN; i++) {
-      let aux: number | undefined = list.shift();
+      let aux = list.shift();
       list.push(aux);
     }
 
     return this.toString(list);
+  }
+
+  //ex 9
+  //devem ter jeitos mais chiques de fazer
+  public amplitude(): number {
+    let list: number[] = this.selectionSort3();
+
+    //pegando o menor elemento de forma direta
+    // let min: number = list[0];
+    // let max: number = list[this.LEN - 1];
+
+    //considerando que é uma fila (??? pode ser?)
+    let min = list.shift();
+    let max = list.pop();
+
+    let diff: number = max - min;
+
+    return diff;
   }
 
   private average(list: number[]): number {
