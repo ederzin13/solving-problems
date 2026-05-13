@@ -1,3 +1,4 @@
+//ex 2
 export default class Random {
   private list: number[];
   private readonly LEN: number;
@@ -28,6 +29,7 @@ export default class Random {
     return list;
   }
 
+  //ex 3
   public cutValue(n: number): string {
     let list: number[] = this.list;
 
@@ -41,6 +43,7 @@ export default class Random {
     return this.toString(list);
   }
 
+  //ex 4
   public rmMultiple(n: number): string {
     let list = this.list;
 
@@ -56,6 +59,7 @@ export default class Random {
     return this.toString(list);
   }
 
+  //ex 5
   //faz sentido?
   public nextToAverage(): number {
     let list = this.list;
@@ -86,6 +90,33 @@ export default class Random {
     console.log(list);
 
     return list[pos];
+  }
+
+  //ex 6
+  public reduce(n: number): string {
+    let list = this.list;
+
+    for (let i: number = 0; i < n; i++) {
+      list.pop();
+    }
+
+    return this.toString(list);
+  }
+
+  //ex 7
+  public getSlice(start: number, end: number): string {
+    let list = this.list;
+    const LEN: number = this.LEN;
+
+    for (let i: number = 0; i < start; i++) {
+      list.shift();
+    }
+
+    for (let i: number = LEN - 1; i > end; i--) {
+      list.pop();
+    }
+
+    return this.toString(list);
   }
 
   private average(list: number[]): number {

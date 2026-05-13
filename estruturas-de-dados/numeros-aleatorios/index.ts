@@ -1,6 +1,6 @@
 import Random from "./Random";
 
-let teste: Random = new Random(5);
+let teste: Random = new Random(10);
 // console.log(teste.getList());
 // console.log(teste.toString());
 
@@ -11,6 +11,10 @@ let teste: Random = new Random(5);
 // console.log(teste.toString());
 // console.log(teste.rmMultiple(3));
 
-teste.setList([5, 4, 2, 5, 1, 6, 5]);
+// teste.setList([5, 4, 2, 5, 1, 6, 5]);
 console.log(teste.getList());
-console.log(teste.nextToAverage());
+// console.log(teste.nextToAverage());
+
+// console.log(teste.reduce(5));
+
+console.log(teste.getSlice(2, 7));
