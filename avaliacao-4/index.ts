@@ -24,7 +24,7 @@
 // console.log(teste.addFirst(5, 2));
 // // console.log(teste.getTable());
 
-import Domino from "./DominoProva.ts";
+import Domino from "./BetterDomino.ts";
 
 console.clear();
 
@@ -107,3 +107,13 @@ console.log();
 console.log("Inserindo peça repetida no início [3:1]");
 console.log(table.getTable());
 console.log("> Inválido: [1:3][3:6][6:6][6:1][1:5]");
+
+// import Domino from "./BetterDomino";
+
+// let game: Domino = new Domino();
+
+// console.log(game.startGame(5, 5));
+// console.log(game.addFirst(4, 5));
+// game.addLast(5, 3);
+// game.addLast(3, 5);
+// console.log(game.getTable());
