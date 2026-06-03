@@ -33,11 +33,10 @@ export default class Graph {
     //se os vértices não existirem
     if (!this.adjacencyList.has(start)) {
       this.adjacencyList.set(start, []);
+    }
 
-      if (!this.adjacencyList.has(end)) {
-        this.adjacencyList.set(end, []);
-      }
-      return true;
+    if (!this.adjacencyList.has(end)) {
+      this.adjacencyList.set(end, []);
     }
 
     if (
@@ -57,14 +56,15 @@ export default class Graph {
 
   public getNeighbors(v: string): string[] {
     if (this.adjacencyList.has(v)) {
-      return this.adjacencyList.get(v)!;
+      //retorna uma cópia
+      return [...this.adjacencyList.get(v)!];
     }
 
     //pode dar confusão
     return [];
   }
 
-  public removeEdge(source: string, destination: string) {
+  public removeEdge(source: string, destination: string): void {
     if (this.adjacencyList.has(source) && this.adjacencyList.has(destination)) {
       this.removeConnection(source, destination);
 
@@ -72,22 +72,40 @@ export default class Graph {
     }
   }
 
-  //ATROCIDADE
-  private removeConnection(source: string, destination: string) {
-    for (let i = 0; i <= this.adjacencyList.get(source)?.length!; i++) {
-      if (this.adjacencyList.get(source)?.at(i) === destination) {
-        this.adjacencyList.get(source)?.splice(i, 1);
-      }
+  private removeConnection(source: string, destination: string): void {
+    const neighbors = this.adjacencyList.get(source);
+
+    if (!neighbors) {
+      return;
     }
+
+    //filter mantém todos os elementos que atendem a uma condição
+    this.adjacencyList.set(
+      source,
+      neighbors.filter((neighbor) => neighbor !== destination),
+    );
   }
 
-  public removeVertex(v: string) {
+  public removeVertex(v: string): boolean {
+    const neighbors = this.adjacencyList.get(v);
+
+    if (!neighbors) {
+      return false;
+    }
+
+    //pra cada elemento do array (neighbor), executa o bloco
+    //
+    //útil pra quando quero apenas passar por todos os elementos
+    for (const neighbor of neighbors) {
+      this.removeConnection(neighbor, v);
+    }
+
     this.adjacencyList.delete(v);
+
+    return true;
   }
 
   public getList() {
-    let list = this.adjacencyList;
-
-    return list;
+    console.log(this.adjacencyList);
   }
 }

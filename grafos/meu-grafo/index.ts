@@ -11,12 +11,12 @@ grafao.addEdge("A", "B");
 grafao.addEdge("C", "A");
 grafao.addEdge("A", "B");
 
-console.log(grafao.getList());
+grafao.getList();
 
 console.log(grafao.getNeighbors("A"));
 
 grafao.removeEdge("A", "B");
-console.log(grafao.getList());
+grafao.getList();
 grafao.removeVertex("B");
 
-console.log(grafao.getList());
+grafao.getList();
