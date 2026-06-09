@@ -86,4 +86,18 @@ export default class Tree {
 
     return this.getMinAux(currentNode.getLeft()!);
   }
+
+  public getMax(): number {
+    let currentNode = this.root;
+
+    return this.getMaxAux(currentNode!);
+  }
+
+  private getMaxAux(currentNode: Node): number {
+    if (!currentNode.getRight()) {
+      return currentNode.getValue();
+    }
+
+    return this.getMaxAux(currentNode.getRight()!);
+  }
 }

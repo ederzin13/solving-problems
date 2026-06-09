@@ -14,3 +14,4 @@ tree.addNode(10);
 console.log(tree);
 
 console.log(tree.getMin());
+console.log(tree.getMax());
