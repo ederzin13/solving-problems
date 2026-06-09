@@ -9,10 +9,6 @@ export default class Tree {
     this.size = 0;
   }
 
-  // public getRoot(): Node {
-  //   return this.root;
-  // }
-
   public setRoot(root: Node): boolean {
     if (!this.root) {
       this.root = root;
@@ -25,40 +21,56 @@ export default class Tree {
     return false;
   }
 
-  //pensar recursivamente
   public addNode(value: number) {
-    const node: Node = new Node(value);
-    const rootValue = this.root?.getValue();
+    const newNode: Node = new Node(value);
 
     //se a árvore estiver vazia, define o novo nó como raiz
     if (this.isEmpty()) {
-      this.setRoot(node);
-    }
-
-    //valor menor que raiz -> vai pra esquerda
-    if (value < rootValue!) {
-      this.root?.setLeft(node);
+      this.setRoot(newNode);
       this.size++;
+      return;
     }
 
-    if (value >= rootValue!) {
-      this.root?.setRight(node);
+    return this.addNodeAux(this.root!, newNode);
+  }
+
+  private addNodeAux(currentNode: Node, newNode: Node): boolean {
+
+    //se o valor do novo for igual ao valor atual
+    if (newNode.getValue() === currentNode.getValue()) {
+      return false;
+    }
+
+    //pra esquerda
+    if (newNode.getValue() < currentNode.getValue()) {
+      //se o getLeft retornar falso, significa que não tem nó pra esquerda
+      if (!currentNode.getLeft()) {
+        currentNode.setLeft(newNode);
+        this.size++;
+
+        return true;
+      }
+
+      return this.addNodeAux(currentNode.getLeft()!, newNode);
+    }
+
+    //pra direita
+    if (!currentNode.getRight()) {
+      currentNode.setRight(newNode);
       this.size++;
+
+      return true;
     }
 
-    //e agora?
-    //agora, como os filhos já estão preenchidos, não é mais possível 
-    //inserir no nó atual
-    // -> preciso passar para o próximo nó
-    //
+    return this.addNodeAux(currentNode.getRight()!, newNode);
   }
 
   private isEmpty(): boolean {
     if (this.root) {
-      return true;
+      return false;
     }
 
-    return false;
+    return true;
   }
 
   //operações da árvore sempre ficam aqui

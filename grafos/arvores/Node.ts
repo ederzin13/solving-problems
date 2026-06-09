@@ -24,16 +24,6 @@ export default class Node {
     return this.right;
   }
 
-  // public setRight(value: number): boolean {
-  //   if (this.rightOrLeft(value) > 0) {
-  //     this.right = new Node(value);
-
-  //     return true;
-  //   }
-
-  //   return false;
-  // }
-
   public setLeft(node: Node): boolean {
     if (!this.left) {
       this.left =  node;
