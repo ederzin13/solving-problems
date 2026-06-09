@@ -11,5 +11,6 @@ console.log(tree);
 tree.addNode(7);
 tree.addNode(4);
 tree.addNode(10);
-
 console.log(tree);
+
+console.log(tree.getMin());

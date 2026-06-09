@@ -35,7 +35,6 @@ export default class Tree {
   }
 
   private addNodeAux(currentNode: Node, newNode: Node): boolean {
-
     //se o valor do novo for igual ao valor atual
     if (newNode.getValue() === currentNode.getValue()) {
       return false;
@@ -73,5 +72,18 @@ export default class Tree {
     return true;
   }
 
-  //operações da árvore sempre ficam aqui
+  public getMin(): number {
+    let currentNode = this.root;
+
+    return this.getMinAux(currentNode!)!;
+  }
+
+  private getMinAux(currentNode: Node): number {
+    //se não tiver pra esquerda
+    if (!currentNode?.getLeft()) {
+      return currentNode?.getValue()!;
+    }
+
+    return this.getMinAux(currentNode.getLeft()!);
+  }
 }
