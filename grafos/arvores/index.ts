@@ -15,3 +15,5 @@ console.log(tree);
 
 console.log(tree.getMin());
 console.log(tree.getMax());
+
+console.log(tree.getValuesInOrder());

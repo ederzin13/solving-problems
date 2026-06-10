@@ -100,4 +100,24 @@ export default class Tree {
 
     return this.getMaxAux(currentNode.getRight()!);
   }
+
+  public getValuesInOrder(): number[] {
+    const values: number[] = [];
+
+    this.inOrder(this.root, values);
+
+    return values;
+  }
+
+  private inOrder(node: Node | null, values: number[]): void {
+    if (node === null) {
+      return;
+    }
+
+    this.inOrder(node.getLeft(), values);
+
+    values.push(node.getValue());
+
+    this.inOrder(node.getRight(), values);
+  }
 }
