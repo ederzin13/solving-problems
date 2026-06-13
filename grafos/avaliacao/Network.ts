@@ -43,4 +43,29 @@ export default class Network {
 
     return true;
   }
+
+  public getConnected(branch: string): string[] {
+    let arr: string[] = [];
+
+    //guarda os elementos que já foram vistos
+    let visited: string[] = [];
+
+    return this.getConnectedAux(branch, arr, visited);
+  }
+
+  private getConnectedAux(branch: string, arr: string[], visited: string[]) {
+    
+    visited.push(branch);
+    
+    //entra nos vizinhos e coloca eles no array
+    this.net.get(branch)?.forEach((neighbor) => {
+      //se não tiver sido visitado, coloca o vizinho no array e entra nele
+      if (!visited.includes(neighbor)) {
+        arr.push(neighbor);
+        this.getConnectedAux(neighbor, arr, visited);
+      }
+    });
+
+    return arr;
+  }
 }

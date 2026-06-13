@@ -13,3 +13,5 @@ network.add("g", "e");
 network.add("h", "i");
 
 console.log(network);
+
+console.log(network.getConnected("a"));
