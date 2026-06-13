@@ -53,10 +53,13 @@ export default class Network {
     return this.getConnectedAux(branch, arr, visited);
   }
 
-  private getConnectedAux(branch: string, arr: string[], visited: string[]) {
-    
+  private getConnectedAux(
+    branch: string,
+    arr: string[],
+    visited: string[],
+  ): string[] {
     visited.push(branch);
-    
+
     //entra nos vizinhos e coloca eles no array
     this.net.get(branch)?.forEach((neighbor) => {
       //se não tiver sido visitado, coloca o vizinho no array e entra nele
@@ -67,5 +70,33 @@ export default class Network {
     });
 
     return arr;
+  }
+
+  public getNotConnected(branch: string): string[] {
+    //pego o array com os conectados
+    let connected = this.getConnected(branch);
+
+    //cria uma cópia do map lá de cima
+    let net = new Map(this.net);
+
+    let notConnected: string[] = [];
+
+    //remove as chaves do mapa que não estão presentes no array
+    for (let i = 0; i < connected.length; i++) {
+      if (net.has(connected[i])) {
+        net.delete(connected[i]);
+      }
+    }
+
+    //gambiarra: desse jeito, a branch fica repetida, então removo na mão mesmo
+    net.delete(branch);
+
+    //pra cada chave restante no mapa, coloco no array de não conectados
+    //obs: não uso o value por que só quero a chave
+    net.forEach((value, key) => {
+      notConnected.push(key);
+    });
+
+    return notConnected;
   }
 }

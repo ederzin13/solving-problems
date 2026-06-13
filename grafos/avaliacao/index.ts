@@ -12,6 +12,11 @@ network.add("e", "f");
 network.add("g", "e");
 network.add("h", "i");
 
-console.log(network);
 
 console.log(network.getConnected("a"));
+console.log(network.getNotConnected("a"));
+
+console.log(network.getConnected("f"));
+console.log(network.getNotConnected("f"));
+
+console.log(network);
